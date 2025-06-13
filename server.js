@@ -10,6 +10,7 @@ const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
+const baseController = require("./controllers/baseController")
 
 
 /* ***********************
@@ -26,9 +27,12 @@ app.set("layout", "./layouts/layout")
 app.use(static)
 
 // Index Route
-app.get("/", function(req, res) {
-  res.render("index", {title: "Home", description: "Welcome to the home page of CSE Motors."})
-})
+app.get("/", baseController.buildHome)
+
+// Uncomment the following lines if you want to use the original index route
+// app.get("/", function(req, res) {
+//   res.render("index", {title: "Home", description: "Welcome to the home page of CSE Motors."})
+// })
 
 /* ***********************
  * Local Server Information
