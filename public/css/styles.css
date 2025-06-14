@@ -340,3 +340,125 @@ section {
     width: 45%;
   }
 }
+
+/* --- Inventory Classification Display --- */
+#inv-display {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  /* Use CSS Grid for responsive layout */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* Auto-fit columns, min 250px wide */
+  gap: 20px;
+  /* Space between grid items */
+  list-style: none;
+  /* Remove bullet points from the list */
+}
+
+#inv-display li {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  /* Ensures content stays within rounded corners */
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  /* Smooth hover effect */
+  background-color: #fff;
+  /* White background for each item */
+  display: flex;
+  flex-direction: column;
+}
+
+#inv-display li:hover {
+  transform: translateY(-5px);
+  /* Lift effect on hover */
+}
+
+#inv-display li a {
+  display: block;
+  text-decoration: none;
+  /* Remove underline from links */
+  color: inherit;
+  /* Inherit text color from parent */
+}
+
+#inv-display li img {
+  width: 200px;
+  /* Make images fill their container */
+  height: 113px;
+  /* Fixed height for images */
+  object-fit: cover;
+  /* Crop images to fit while maintaining aspect ratio */
+  border-bottom: 1px solid #eee;
+}
+
+.namePrice {
+  padding: 15px;
+  text-align: left;
+  /* Align text within name/price block to the left */
+  flex-grow: 1;
+  /* Allows this section to take up available space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Pushes price to the bottom if content varies */
+}
+
+.namePrice h2 {
+  font-size: 1.2em;
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.namePrice span {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #007bff;
+  /* A nice blue for prices */
+  text-align: right;
+  /* Align price to the right within its container */
+  margin-top: auto;
+  /* Pushes the price to the bottom if using flex-direction column */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  #inv-display {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* Smaller columns on medium screens */
+    gap: 15px;
+  }
+
+  #inv-display li img {
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  #inv-display {
+    grid-template-columns: 1fr;
+    /* Single column on small screens */
+    gap: 10px;
+  }
+
+  #inv-display li img {
+    height: 200px;
+    /* Adjust height for single column display */
+    width: 250px;
+      /* Make images fill their container */
+  }
+
+  .namePrice {
+    padding: 10px;
+  }
+
+  .namePrice h2 {
+    font-size: 1.1em;
+  }
+
+  .namePrice span {
+    font-size: 1em;
+  }
+}
