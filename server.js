@@ -35,7 +35,7 @@ app.use("/inv", inventoryRoute)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
-  next({status: 404, message: 'Sorry, we appear to have lost that page.'})
+  next({status: 404, message: 'Sorry, we appear to have lost that page.'}, {status: 500, message: 'Oh no! There was a crash. I wonder what exactly happened Maybe try a different route?'})
 })
 
 // Uncomment the following lines if you want to use the original index route
