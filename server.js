@@ -13,6 +13,8 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require('./routes/inventoryRoute');
 const utilities = require("./utilities/")
+const errorRoute = require("./routes/errorRoute");
+
 
 
 /* ***********************
@@ -33,9 +35,17 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 // Inventory routes
 app.use("/inv", inventoryRoute)
 
+// Error route for testing error handling
+// This route is used to intentionally cause an error for testing purposes
+app.use("/", errorRoute)
+
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
-  next({status: 404, message: 'Sorry, we appear to have lost that page.'}, {status: 500, message: 'Oh no! There was a crash. I wonder what exactly happened Maybe try a different route?'})
+  next({status: 404, message: 'Sorry, we appear to have lost that page.'})
+})
+
+app.use(async (req, res, next) => {
+  next({status: 500, message: 'Oh no! There was a crash. I wonder what exactly happened Maybe try a different route?'})
 })
 
 // Uncomment the following lines if you want to use the original index route
@@ -61,6 +71,7 @@ app.use(async (err, req, res, next) => {
     nav
   })
 })
+
 
 /* ***********************
  * Local Server Information
