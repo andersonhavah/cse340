@@ -16,6 +16,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
     title: className + " vehicles",
     nav,
     grid,
+    description: `This is the ${className} vehicles page.`,
   })
 }
 
@@ -41,6 +42,7 @@ invCont.buildByInventoryId = async function (req, res, next) {
       title: vehicleName,
       nav,
       grid, // Use "grid" to pass the HTML to the view
+      description: `This is the ${vehicleName} page.`,
     });
   };
 
