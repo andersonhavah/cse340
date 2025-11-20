@@ -13,6 +13,8 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/index")
+const intentionalErrorRoute = require("./routes/intentionalErrorRoute");
+const catchIntentionalError = require("./middleware/catchIntentionalError");
 
 /* ***********************
  * View Engine and Templates
@@ -31,6 +33,12 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 
 // Inventory routes
 app.use("/inv", inventoryRoute)
+
+// Intentional error route (for testing 500 handling)
+app.use("/error", intentionalErrorRoute);
+
+// Middleware to catch intentional errors from /error routes and render the error view
+app.use(catchIntentionalError);
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
