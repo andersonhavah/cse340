@@ -375,7 +375,7 @@ section {
 
 #inv-display li img {
   width: 70%;
-  height: 113px;
+  height: 130px;
   object-fit: cover;
   border-bottom: 1px solid #eee;
 }
@@ -407,13 +407,13 @@ section {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   #inv-display {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 312px));
     gap: 15px;
   }
 
   #inv-display li img {
-    height: 150px;
-    width: 100%;
+    height: 130px;
+    width: 70%;
   }
 }
 
