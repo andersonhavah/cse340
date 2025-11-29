@@ -17,6 +17,7 @@ const intentionalErrorRoute = require("./routes/intentionalErrorRoute");
 const catchIntentionalError = require("./middleware/catchIntentionalError");
 const session = require("express-session")
 const pool = require("./database/")
+const accountRoute =  require("./routes/accountRoute")
 
 /* ***********************
  * Middleware
@@ -56,6 +57,9 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 
 // Inventory routes
 app.use("/inv", inventoryRoute)
+
+// Account routes
+app.use("/account", accountRoute);
 
 // Intentional error route (for testing 500 handling)
 app.use("/error", intentionalErrorRoute);
