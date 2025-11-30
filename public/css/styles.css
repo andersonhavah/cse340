@@ -711,16 +711,17 @@ input:required:invalid:focus {
   margin: 0;
   border-radius: 0.5rem;
   overflow: hidden;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  /* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); */
 }
 
 /* Base style for any message */
 #messages li,
 .flash-message.notice li {
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1rem;
   font-size: 0.95rem;
   font-weight: 500;
   list-style: inside;
+  list-style-type: none;
 }
 
 /* Style for "notice" messages (Success) */
@@ -729,6 +730,7 @@ input:required:invalid:focus {
   color: #166534;
   border: 1px solid #22c55e;
   border-left: 5px solid #22c55e;
+  border-radius: 0.5rem;
 }
 
 /* Style for "error" messages (for future use) */
@@ -739,4 +741,5 @@ input:required:invalid:focus {
   color: #991b1b;
   border: 1px solid #ef4444;
   border-left: 5px solid #ef4444;
+  border-radius: 0.5rem;
 }
