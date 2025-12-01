@@ -9,6 +9,16 @@
 
   <!-- ADD THIS LINE TO DISPLAY THE FLASH MESSAGE -->
   <%- messages() %>
+<% if (errors) { const filtered=errors.array().filter(e=> e.msg !== 'Invalid value');
+    if (filtered.length) { %>
+    <ul class="flash-message notice">
+        <% filtered.forEach(error=> { %>
+            <li>
+                <%= error.msg %>
+            </li>
+            <% }) %>
+    </ul>
+    <% } } %>
   <!-- Login Form -->
   <form id="loginForm" action="/account/login" method="post">
     <!-- Email Input -->
