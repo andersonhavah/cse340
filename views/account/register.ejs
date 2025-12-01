@@ -8,13 +8,17 @@
   </div>
 
   <!-- This block will display any flash messages sent from the server -->
-  <%- messages() %> <% if (errors) { %>
-  <ul class="flash-message notice">
-    <% errors.array().forEach(error=> { %>
-    <li><%= error.msg %></li>
-    <% }) %>
-  </ul>
-  <% } %>
+  <%- messages() %> 
+<% if (errors) { const filtered=errors.array().filter(e=> e.msg !== 'Invalid value');
+    if (filtered.length) { %>
+    <ul class="flash-message notice">
+        <% filtered.forEach(error=> { %>
+            <li>
+                <%= error.msg %>
+            </li>
+            <% }) %>
+    </ul>
+    <% } } %>
 
   <!-- Registration Form -->
   <form id="registerForm" action="/account/register" method="post">
