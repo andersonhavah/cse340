@@ -77,4 +77,61 @@ validate.checkRegData = async (req, res, next) => {
   next()
 }
 
+/*  **********************************
+  *  Login Data Validation Rules
+  * ********************************* */
+validate.loginRules = () => {
+    return [
+         // valid email is required and must already exist in the DB
+        body("account_email")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isEmail()
+            .normalizeEmail() // refer to validator.js docs
+            .withMessage("A valid email is required.")
+            .custom(async (account_email) => {
+                const emailExists = await accountModel.checkExistingEmail(account_email)
+                if (!emailExists){
+                throw new Error("Email doesn't exist. Please log in using the email you registered with.")
+                }
+            }),
+        
+         // password is required and must be strong password
+        body("account_password")
+            .trim()
+            .notEmpty()
+            .isStrongPassword({
+                minLength: 12,
+                minSymbols: 1,
+                minNumbers: 1,
+                minUppercase: 1,
+                minLowercase: 1,
+            })
+            .withMessage("Password does not meet requirements."), // on error this message is sent.
+     ]
+}
+
+/* ****************************************
+ * Check login data and return errors or continue to login
+ * *************************************** */
+validate.checkLoginData = async (req, res, next) => {
+  const { account_email } = req.body
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    res.render("account/login", {
+      errors,
+      title: "Login",
+      nav,
+      description: "CSE Motors Login Page", 
+      account_email,
+    })
+    return
+  }
+  next()
+}
+
+
 module.exports = validate
