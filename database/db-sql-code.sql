@@ -47,6 +47,14 @@ CREATE TABLE IF NOT EXISTS public.account (
     CONSTRAINT account_pkey PRIMARY KEY (account_id)
 );
 
+-- Data for table `classification`
+INSERT INTO public.classification (classification_name)
+VALUES ('Custom'),
+    ('Sport'),
+    ('SUV'),
+    ('Truck'),
+    ('Sedan');
+
 -- Data for table `inventory`
 INSERT INTO public.inventory (
     inv_make,
