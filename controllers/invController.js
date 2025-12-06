@@ -9,15 +9,50 @@ const invCont = {};
 invCont.buildByClassificationId = async function (req, res, next) {
   const classification_id = req.params.classificationId
   const data = await invModel.getInventoryByClassificationId(classification_id)
-  const grid = await utilities.buildClassificationGrid(data)
   let nav = await utilities.getNav()
-  const className = data[0].classification_name
-  res.render("./inventory/classification", {
-    title: className + " vehicles",
-    nav,
-    description: "Inventory for " + className + " vehicles",
-    grid,
-  })
+  let className
+  
+  if (data.length > 0) {
+    // If inventory data exists, get the classification name from the first item
+    className = data[0].classification_name
+    
+    // Build the grid and render the view with the inventory
+    const grid = await utilities.buildClassificationGrid(data)
+    
+    res.render("./inventory/classification", {
+      title: className + " vehicles",
+      nav,
+      description: "Inventory for " + className + " vehicles",
+      grid,
+    })
+    
+  } else {
+    // If no inventory data is found, we need to get the classification name 
+    // using the classification_id directly.
+    const classificationInfo = await invModel.getClassificationNameById(classification_id)
+    
+    if (classificationInfo) {
+        className = classificationInfo.classification_name
+    } else {
+        // Fallback if the classification ID itself is invalid or not found
+        req.flash("notice", "Sorry, that classification could not be found.")
+        // You might want to redirect to the home page or inventory management
+        res.redirect("/") 
+        return
+    }
+    
+    // Set the flash message
+    req.flash("notice", `No vehicles of the <strong>${className}</strong> classification have been added yet.`)
+    
+    // Render the view with an empty grid so the flash message is displayed
+    res.render("./inventory/classification", {
+      title: className + " vehicles",
+      nav,
+      // Pass an empty string for the grid to display the flash message instead
+      grid: "", 
+      description: "Inventory for " + className + " vehicles",
+    })
+  }
 }
 
 /* ***************************
