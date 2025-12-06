@@ -748,3 +748,159 @@ input:required:invalid:focus {
   border-left: 5px solid #ef4444;
   border-radius: 0.5rem;
 }
+
+/* ===============================
+  Management View Styling
+================================*/
+.management-links {
+  margin-top: 2rem;
+}
+
+.management-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.management-links li {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.management-links a {
+  display: block;
+  padding: 0.8rem;
+  background-color: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.management-links a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* ===============================
+  General Form Styling
+================================*/
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #333;
+  width: 100%;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form input[type="password"],
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+form p {
+  font-size: 0.9rem;
+  color: #595959;
+  margin-top: -0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-button {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #186329;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #11461D;
+}
+
+/* ===============================
+  Inventory Management Table
+================================*/
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+#inventoryDisplay thead {
+  background-color: #333;
+  color: #fff;
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+#inventoryDisplay th {
+  font-weight: bold;
+}
+
+#inventoryDisplay tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#inventoryDisplay tbody tr:hover {
+  background-color: #e2e2e2;
+}
+
+#inventoryDisplay a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#inventoryDisplay a:hover {
+  text-decoration: underline;
+}
+
+.delete-button {
+  background-color: #dc3545;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
