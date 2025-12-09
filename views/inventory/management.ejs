@@ -1,7 +1,12 @@
 <%# views/inventory/management.ejs %>
+<%# The title for this view is "Vehicle Management" %>
+  <% if (title) { %>
+    <h1>
+      <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
 
-<h1>Vehicle Management</h1>
-<%- messages() %>
+    <%- messages() %>
 
 <div class="management-links">
   <ul>
@@ -24,4 +29,4 @@
 <noscript>JavaScript must be enabled to use this page.</noscript>
 
 <%# Link to the new JavaScript file at the bottom of the view %>
-<script src="/js/inventory.js"></script>
+<script src="../../js/inventory.js"></script>
