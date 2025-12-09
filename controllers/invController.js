@@ -240,7 +240,7 @@ invCont.addInventory = async function (req, res) {
 invCont.getInventoryJSON = async (req, res, next) => {
     const classification_id = parseInt(req.params.classification_id)
     const invData = await invModel.getInventoryByClassificationId(classification_id)
-    if (invData.length > 0) { // Check if the array is not empty
+    if (invData[0].inv_id) { // Check if the array is not empty
         return res.json(invData)
     } else {
         // To prevent an error on the client-side, send an empty array
