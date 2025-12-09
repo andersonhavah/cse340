@@ -1,5 +1,9 @@
 <%# The title is dynamically set from the controller %>
-<h1>Edit <%= inv_make %> <%= inv_model %></h1>
+<% if (title) { %>
+  <h1>
+    <%= title %>
+  </h1>
+  <% } else { res.redirect('/') } %>
 
 <%# Display flash messages and validation errors %> 
 <%- messages() %>

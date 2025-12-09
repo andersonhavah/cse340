@@ -1,5 +1,9 @@
 <%# The title for this view is "Add New Classification" %>
-<h1>Add New Classification</h1>
+<% if (title) { %>
+  <h1>
+    <%= title %>
+  </h1>
+  <% } else { res.redirect('/') } %>
 
 <%# Display flash messages and validation errors %> 
 <%- messages() %>
