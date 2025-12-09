@@ -114,11 +114,12 @@
     </div>
 
     <%# The button text is changed to "Update" %>
-    <button type="submit" class="form-button">Update Vehicle</button>
+    <button type="submit" class="form-button" disabled>Update Vehicle</button>
 
     <%# IMPORTANT: Add a hidden input to send the inv_id with the form
     submission %>
-    <input type="hidden" name="inv_id" value="<%= locals.inv_id || '' %>" >
+    <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+<% } %> >
   </fieldset>
 </form>
-<script src="/js/inv-update.js"></script>
+<script src="../../js/inv-update.js"></script>
