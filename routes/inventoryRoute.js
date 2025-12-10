@@ -14,16 +14,21 @@ router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildByI
 
 // Route to build the management view
 // This is the new route for Task 1
-router.get("/", utilities.handleErrors(invController.buildManagementView));
+router.get("/",
+  utilities.checkAccountType,
+  utilities.handleErrors(invController.buildManagementView));
 
 // Route to deliver the add classification view
 // Task 2
-router.get("/add-classification", utilities.handleErrors(invController.buildAddClassificationView));
+router.get("/add-classification",
+  utilities.checkAccountType,
+  utilities.handleErrors(invController.buildAddClassificationView));
 
 // Route to process the new classification data
 // Task 2
 router.post(
     "/add-classification",
+    utilities.checkAccountType,
     invValidate.classificationRules(),
     invValidate.checkClassificationData,
     utilities.handleErrors(invController.addClassification)
@@ -31,12 +36,15 @@ router.post(
 
 // Route to deliver the add inventory view
 // Task 3
-router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventoryView));
+router.get("/add-inventory",
+  utilities.checkAccountType,
+  utilities.handleErrors(invController.buildAddInventoryView));
 
 // Route to process the new inventory data
 // Task 3
 router.post(
-    "/add-inventory",
+  "/add-inventory",
+    utilities.checkAccountType,
     invValidate.inventoryRules(),
     invValidate.checkInventoryData,
     utilities.handleErrors(invController.addInventory)
@@ -49,22 +57,28 @@ router.get(
 );
 
 // Route to build the edit inventory view
-router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView));
+router.get("/edit/:inv_id",
+  utilities.checkAccountType,
+  utilities.handleErrors(invController.editInventoryView));
 
 // Process the inventory update
 router.post(
   "/update",
+  utilities.checkAccountType,
   invValidate.inventoryRules(), // Re-use the same validation rules
   invValidate.checkUpdateData,    // Use a new check function for updates
   utilities.handleErrors(invController.updateInventory)
 );
 
 // Route to deliver the delete confirmation view
-router.get("/delete/:inv_id", utilities.handleErrors(invController.buildDeleteView));
+router.get("/delete/:inv_id",
+  utilities.checkAccountType,
+  utilities.handleErrors(invController.buildDeleteView));
 
 // Route to process the delete request
 router.post(
   "/delete",
+  utilities.checkAccountType,
   utilities.handleErrors(invController.deleteInventory)
 );
 
