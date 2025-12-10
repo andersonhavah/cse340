@@ -36,7 +36,7 @@
         name="inv_make"
         readonly
         value="<%= locals.inv_make || '' %>"
-      />
+      >
     </div>
     <div class="form-group">
       <label for="inv_model">Model</label>
@@ -46,7 +46,7 @@
         name="inv_model"
         readonly
         value="<%= locals.inv_model || '' %>"
-      />
+      >
     </div>
     <div class="form-group">
       <label for="inv_year">Year</label>
@@ -56,7 +56,7 @@
         name="inv_year"
         readonly
         value="<%= locals.inv_year || '' %>"
-      />
+      >
     </div>
     <div class="form-group">
       <label for="inv_price">Price</label>
@@ -66,7 +66,7 @@
         name="inv_price"
         readonly
         value="<%= locals.inv_price || '' %>"
-      />
+      >
     </div>
 
     <%# The button text is changed to "Delete" and is a different color %>
@@ -75,6 +75,7 @@
     </button>
 
     <%# IMPORTANT: The hidden inv_id field must be present %>
-    <input type="hidden" name="inv_id" value="<%= locals.inv_id || '' %>" />
+    <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+<% } %>>
   </fieldset>
 </form>
