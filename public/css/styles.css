@@ -750,6 +750,10 @@ input:required:invalid:focus {
   padding: 0.2rem;
 }
 
+.notice {
+  padding: 1rem;
+}
+
 /* ===============================
   Management View Styling
 ================================*/
@@ -904,4 +908,273 @@ form p {
 
 .delete-button:hover {
   background-color: #c82333;
+}
+
+/* ============================================================
+   Inventory Review Styling
+   ============================================================ */
+
+/* --- Review Section Container (Detail View) --- */
+#reviews {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+  max-width: 1000px;
+}
+
+#reviews h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid #007bff;
+  text-align: center;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+#reviews h3 {
+  font-size: 1.4rem;
+  margin: 1.5rem 0 1rem;
+  color: #444;
+}
+
+/* --- Review Cards Grid --- */
+#reviews ul {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* Responsive grid */
+  gap: 1.5rem;
+}
+
+#reviews li {
+  background-color: #fff;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  /* Soft shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+#reviews li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Review Card Typography */
+#reviews li p:first-child {
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+#reviews li p:nth-child(2) {
+  font-size: 0.85rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+#reviews li p:last-child {
+  line-height: 1.6;
+  color: #333;
+  font-size: 1rem;
+}
+
+/* --- Review Forms (Add/Edit/Delete) --- */
+#reviews form,
+.form-container form {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+#reviews fieldset,
+.form-container fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#reviews label,
+.form-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #495057;
+  margin-top: 1rem;
+}
+
+#reviews label:first-child {
+  margin-top: 0;
+}
+
+#reviews textarea,
+.form-container textarea,
+.readonly-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 120px;
+  background-color: #fff;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  box-sizing: border-box;
+}
+
+#reviews textarea:focus,
+.form-container textarea:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Read-Only Input Styling */
+.readonly-input {
+  background-color: #e9ecef !important;
+  opacity: 1;
+  cursor: not-allowed;
+  color: #495057;
+  border-color: #ced4da;
+  height: auto;
+}
+
+/* Buttons */
+#reviews button,
+.form-container button {
+  margin-top: 1.5rem;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: #28a745;
+  /* Success Green */
+  color: #fff;
+  border: 1px solid #28a745;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  cursor: pointer;
+  width: 100%;
+  /* Full width on mobile/forms */
+}
+
+#reviews button:hover,
+.form-container button:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+/* Delete Button Specifics */
+.delete-btn {
+  background-color: #dc3545 !important;
+  /* Danger Red */
+  border-color: #dc3545 !important;
+}
+
+.delete-btn:hover {
+  background-color: #c82333 !important;
+  border-color: #bd2130 !important;
+}
+
+/* --- Account Management Reviews Table --- */
+.management-view {
+  overflow-x: auto;
+  /* Handles horizontal scroll on small screens */
+}
+
+.management-view table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.management-view th {
+  background-color: #343a40;
+  /* Dark header */
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+  padding: 1rem;
+  white-space: nowrap;
+}
+
+.management-view td {
+  padding: 1rem;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+  color: #212529;
+}
+
+.management-view tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.02);
+  /* Zebra striping */
+}
+
+.management-view tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Action Links in Table */
+.management-view td a {
+  display: inline-block;
+  margin-right: 0.5rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.management-view td a[title="Edit Review"] {
+  color: #007bff;
+}
+
+.management-view td a[title="Delete Review"] {
+  color: #dc3545;
+}
+
+.management-view td a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 768px) {
+  #reviews ul {
+    grid-template-columns: 1fr;
+    /* Single column on mobile */
+  }
+
+  .management-view th,
+  .management-view td {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  #reviews button,
+  .form-container button {
+    width: 100%;
+  }
 }
