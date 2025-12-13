@@ -1,5 +1,6 @@
 const invModel = require("../models/inventory-model");
 const utilities = require("../utilities/");
+const reviewModel = require("../models/review-model");
 
 const invCont = {};
 
@@ -62,6 +63,9 @@ invCont.buildByInventoryId = async function (req, res, next) {
     const inventory_id = req.params.inventoryId;
     const data = await invModel.getVehicleByInventoryId(inventory_id);
     
+    // Get Reviews
+    const reviews = await reviewModel.getReviewsByInventoryId(inventory_id)
+    
     // Check if data was returned
     if (!data) {
       // If no data, create an error and pass to the error handler
@@ -78,6 +82,8 @@ invCont.buildByInventoryId = async function (req, res, next) {
       nav,
       grid, 
       description: `This is the ${vehicleName} page.`,
+      reviews, // Pass the reviews array
+      data, // pass specific vehicle data
     });
 };
 
@@ -88,12 +94,18 @@ invCont.buildByInventoryId = async function (req, res, next) {
 invCont.buildManagementView = async function (req, res, next) {
   let nav = await utilities.getNav();
   const classificationSelect = await utilities.buildClassificationList();
+  const account_id = req.params.account_id;
+  
+  // Get Reviews
+  const reviews = await reviewModel.getReviewsByAccountId(account_id)
+
     res.render("./inventory/management", {
         title: "Vehicle Management",
         nav,
         description: "This is the vehicle management page.",
         classificationSelect,
         errors: null,
+        reviews,
     });
 };
 
