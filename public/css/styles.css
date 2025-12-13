@@ -944,7 +944,6 @@ form p {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  /* Responsive grid */
   gap: 1.5rem;
 }
 
@@ -954,7 +953,6 @@ form p {
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  /* Soft shadow */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
@@ -1053,6 +1051,7 @@ form p {
   cursor: not-allowed;
   color: #495057;
   border-color: #ced4da;
+  min-height: 50px;;
   height: auto;
 }
 
@@ -1066,7 +1065,6 @@ form p {
   vertical-align: middle;
   user-select: none;
   background-color: #28a745;
-  /* Success Green */
   color: #fff;
   border: 1px solid #28a745;
   padding: 0.75rem 1.5rem;
@@ -1076,7 +1074,6 @@ form p {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
   cursor: pointer;
   width: 100%;
-  /* Full width on mobile/forms */
 }
 
 #reviews button:hover,
@@ -1088,7 +1085,6 @@ form p {
 /* Delete Button Specifics */
 .delete-btn {
   background-color: #dc3545 !important;
-  /* Danger Red */
   border-color: #dc3545 !important;
 }
 
@@ -1100,7 +1096,6 @@ form p {
 /* --- Account Management Reviews Table --- */
 .management-view {
   overflow-x: auto;
-  /* Handles horizontal scroll on small screens */
 }
 
 .management-view table {
@@ -1113,7 +1108,6 @@ form p {
 
 .management-view th {
   background-color: #343a40;
-  /* Dark header */
   color: #fff;
   font-weight: 600;
   text-align: left;
@@ -1130,7 +1124,6 @@ form p {
 
 .management-view tbody tr:nth-of-type(odd) {
   background-color: rgba(0, 0, 0, 0.02);
-  /* Zebra striping */
 }
 
 .management-view tbody tr:hover {
@@ -1164,7 +1157,6 @@ form p {
 @media (max-width: 768px) {
   #reviews ul {
     grid-template-columns: 1fr;
-    /* Single column on mobile */
   }
 
   .management-view th,
