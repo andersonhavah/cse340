@@ -20,6 +20,7 @@ const pool = require("./database/")
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const reviewRoute = require("./routes/reviewRoute")
 
 /* ***********************
  * Middleware
@@ -68,6 +69,9 @@ app.use("/inv", inventoryRoute)
 
 // Account routes
 app.use("/account", accountRoute);
+
+// Review routes
+app.use("/review", reviewRoute)
 
 // Intentional error route (for testing 500 handling)
 app.use("/error", intentionalErrorRoute);
